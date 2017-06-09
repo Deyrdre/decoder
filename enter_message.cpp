@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-//#include <limits>
-#include <vector>
+#include <enter_message.h>
 
 int parse_key (std::vector<int>& key, std::string& message)
 {
@@ -29,7 +26,7 @@ int enter_message (std::string& encoded_message, std::vector<int>& key)
 
     std::cout<<"Enter message: ";
     getline(std::cin,encoded_message);
-    std::cout<<"enter message is"<<encoded_message<<std::endl;
+    std::cout<<"enter message is "<<encoded_message<<std::endl;
 
     std::cout<<"Enter key: ";
     getline(std::cin,key_message);
@@ -54,6 +51,7 @@ int enter_message (std::string& encoded_message, std::vector<int>& key)
         std::cin.ignore();
 
         if(answer=='y')
+
         {
             key.clear();//need clear vector to new iteration
             enter_message (encoded_message,key);

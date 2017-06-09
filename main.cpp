@@ -11,6 +11,5 @@ int main()
     std::cout<<std::endl;
     std::cout<<encoded_message<<std::endl;
 
-
     return 0;
 }
