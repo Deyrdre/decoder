@@ -4,7 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    enter_message.cpp
+    enter_message.cpp \
+    decode_func.cpp
 
 HEADERS += \
-    enter_message.h
+    enter_message.h \
+    decode_func.h

@@ -1,9 +1,9 @@
 #include <enter_message.h>
 
-int parse_key (std::vector<int>& key, std::string& message)
+int parse (std::vector<int>& key, std::string& message)
 {
     std::string buf ="";
-    std::cout<<"int key is ";
+    //std::cout<<"int key is "; //test message
     for (unsigned int i=0; i<message.length(); i++)
     {
         buf+=message[i];
@@ -13,34 +13,36 @@ int parse_key (std::vector<int>& key, std::string& message)
         {
             key.insert(key.end(),std::stoi(buf));
             buf.clear();
-            std::cout<<key.back()<<" ";
+            //std::cout<<key.back()<<" "; //test message
         }
 
     }
-    std::cout<<std::endl;
+    //std::cout<<std::endl; //test message
     return 0;
 }
 
-int enter_message (std::string& encoded_message, std::vector<int>& key)
+int enter_message (std::vector<int> &message, std::vector<int> &key)
 {   std::string key_message;
+    std::string encoded_message;
 
     std::cout<<"Enter message: ";
     getline(std::cin,encoded_message);
-    std::cout<<"enter message is "<<encoded_message<<std::endl;
+    //std::cout<<"enter message is "<<encoded_message<<std::endl; //test message
 
     std::cout<<"Enter key: ";
     getline(std::cin,key_message);
-    std::cout<<"enter key is "<<key_message<<std::endl;
+    //std::cout<<"enter key is "<<key_message<<std::endl; //test message
 
     //parse key from string to int
-    parse_key(key,key_message);
+    parse(key,key_message);
+    parse(message,encoded_message);
 
     // Compare lengths of encoded_message and key.
     //They must have the same length for decoding
-    if (encoded_message.length()!=key.size())
+    if (message.size()!=key.size())
     {
         std::cout<<"Bad input"<<std::endl;
-        std::cout<<"Message size is "<<encoded_message.length()<<std::endl;
+        std::cout<<"Message size is "<<message.size()<<std::endl;
         std::cout<<"Key size is "<<key.size()<<std::endl;
 
         std::cout<<"Try again?(y/n)"<<std::endl;
@@ -54,7 +56,8 @@ int enter_message (std::string& encoded_message, std::vector<int>& key)
 
         {
             key.clear();//need clear vector to new iteration
-            enter_message (encoded_message,key);
+            message.clear();
+            enter_message (message,key);
         }
         else
         {
@@ -63,9 +66,9 @@ int enter_message (std::string& encoded_message, std::vector<int>& key)
             //in  case of random click
             std::cout<<"Bad input =/"<<std::endl;
             std::cout<<"Program will be closed";
-            return 0;
+            return -2;
         }
     }
 
-    return 1;
+    return 0;
 }
