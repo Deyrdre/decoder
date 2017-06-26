@@ -1,15 +1,33 @@
 #include <iostream>
 #include <string>
-#include <enter_message.h>
-#include <vector>
-#include <decode_func.h>
+#include <decode_class.h>
 int main()
 {
-    std::vector<int> encoded_message;
-    std::vector<int> key;
-    enter_message(encoded_message,key);
-    std::string decode_message;
-    if ((decode_func (encoded_message,key,decode_message))==0)
-        std::cout<<"Message decode was success";
+    decode message1;
+    while (true)
+    {
+        message1.enter_mes();
+
+    if ((message1.decode_func ())==0)
+        std::cout<<"Message decode was success"<<std::endl;
+        std::cout<<"Retruy?(y/n) ";
+        char answer;
+        std::cin>>answer;
+
+        std::cin.clear(); //need clear cin buf
+        std::cin.ignore();
+
+        if(answer=='n')
+            break;
+        if(answer=='y')
+            continue;
+        else
+        {
+            std::cout<<"Bad input =/"<<std::endl;
+            std::cout<<"Program will be closed";
+            break;
+        }
+
+    }
     return 0;
 }
