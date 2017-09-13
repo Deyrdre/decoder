@@ -7,6 +7,7 @@ decode::decode(){
     }
 int decode::decode_func ()
     {
+        decode_message.clear();
         for(unsigned int i=0;i<encoded_message.size();i++)
         {
             if(key[i]!=0)
@@ -26,7 +27,7 @@ int decode::decode_func ()
         for (unsigned int i=0; i<message.length(); i++)
         {
             buf+=message[i];
-            if(message[i+1]!=' ')
+            if((message[i+1]!=' ')&&((i+1)!=message.length()))
                 continue;
             else
             {
